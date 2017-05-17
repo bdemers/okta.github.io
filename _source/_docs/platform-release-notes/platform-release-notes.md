@@ -38,22 +38,25 @@ For a full description of the new rate limits, see [API Rate Limit Improvements]
 
 #### Okta Expression Language Function for Filtering Groups
 
-Use the Okta Expression Language function `getFilteredGroups` to create a list of groups that the current member belongs to.
+Use the Okta Expression Language function `getFilteredGroups` to create a list of groups that the current user belongs to.
 With such a list you can, for example, create claims in Access Tokens and ID Tokens based on the groups.
 For more information, see [Group Functions](/reference/okta_expression_language/index.html#group-functions). <!--OKTA-123127-->
 
 #### New Profile Property for Apps
 
 The `profile` property in the Apps API accepts any well-formed JSON schema. You can specify properties in the profile and then access them in API requests.
-For example, you can use the profile to define a whitelist of groups that you can then reference and pass as claims
-using the [Okta Expression Language function `getFilteredGroups`](/reference/okta_expression_language/index.html#group-functions).
-For more information, see the [Apps API](/docs/api/resources/apps.html#update-app-with-profile-for-openid-connect-apps).
+For example:
+
+* Add an app manager contact email address.
+* Use the profile to define a whitelist of groups that you can then reference and pass as claims using the [Okta Expression Language function `getFilteredGroups`](/reference/okta_expression_language/index.html#group-functions).
+
+For more information, see the [Apps API](/docs/api/resources/apps.html#set-profile-property-for-openid-connect-apps).
 
 Note that the status code for service claims errors has changed from 500 to 400 as part of this feature. <!--OKTA-123128-->
 
-#### Added Login Hint to OAuth 2.0 API
+#### Added Login Hint to OAuth 2.0 and OpenID Connect API
 
-Use the `login_hint` property on `/oauth2/:authorizationServerId/v1/authorize` to populate a username when prompting for authentication. <!-- OKTA-87073-->
+Use the `login_hint` property on `/oauth2/:authorizationServerId/v1/authorize` or `/oauth2/v1/authorize` to populate a username when prompting for authentication. <!-- OKTA-87073-->
 
 ### Platform Bugs Fixed
 
